@@ -19,9 +19,19 @@ class ListNode:
     def __init__(self, x):
         self.val = x
         self.next = None
+    def printAllNode(self):
+        p = self
+        while p.next:
+            print(p.val, end='')
+            p = p.next
+        print(p.val, end='')
 
 class Solution:
     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+        print('两数相加： ', end='')
+        l1.printAllNode()
+        print('+', end='')
+        l2.printAllNode()
         # 输出的是原有的l1链
         p_l1 = l1
         p_l2 = l2
@@ -49,13 +59,13 @@ class Solution:
                     p_l1.next = ListNode(1)
                     print(p_l1)
                     return l1
-            print("=========")
+            # print("=========")
             p_l1.next = p_l2.next
             
             while forward > 0 and p_l1.next:
                 p_l1 = p_l1.next
                 temp = p_l1.val + forward
-                print("temp: %d" % temp)
+                # print("temp: %d" % temp)
                 p_l1.val = (temp) % 10
                 forward = temp // 10
             if forward > 0:
@@ -70,7 +80,7 @@ class Solution:
             if forward > 0:
                 p_l1.next = ListNode(1)
         return l1
-            
+   
 if __name__ == '__main__':
     s = Solution()
     # l1 = ListNode(2)
@@ -85,5 +95,5 @@ if __name__ == '__main__':
     
     # 243 + 564 = 708   倒序
     l3 = s.addTwoNumbers(l1, l2)
-    print(l3.val)
-    print(l3.next.val)
+    print('结果为:', end='')
+    l3.printAllNode()
